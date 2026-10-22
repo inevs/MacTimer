@@ -33,12 +33,16 @@ final class AppController {
     private let banner: BannerController
     private let quickStart = QuickStartController()
     private var hotKey: HotKey?
+    private var autoHideTask: Task<Void, Never>?
 
     init() {
         banner = BannerController(model: model)
         banner.onClose = { [weak self] in self?.stop() }
         quickStart.onStart = { [weak self] duration in self?.start(duration: duration) }
-        model.onFinish = { [weak self] in self?.gong.play() }
+        model.onFinish = { [weak self] in
+            self?.gong.play()
+            self?.scheduleAutoHide()
+        }
     }
 
     /// ⌃⌥T öffnet das Eingabefenster.
@@ -54,8 +58,20 @@ final class AppController {
     }
 
     func stop() {
+        autoHideTask?.cancel()
+        autoHideTask = nil
         model.stop()
         banner.hide()
+    }
+
+    /// Blendet den Banner 5 Sekunden nach Ablauf aus, sofern die Zeit nicht per `+1` verlängert wurde.
+    private func scheduleAutoHide() {
+        autoHideTask?.cancel()
+        autoHideTask = Task { [weak self] in
+            try? await Task.sleep(for: .seconds(5))
+            guard !Task.isCancelled, let self, self.model.state == .finished else { return }
+            self.stop()
+        }
     }
 
     func showQuickStart() {

@@ -59,7 +59,7 @@ Die App wird ohne Entwickler-Zertifikat signiert. Auf dem Rechner, auf dem sie g
 | Timer beenden | Button `✕` im Banner oder Menü → „Timer beenden“ |
 | Banner wiederfinden | Menü → „Banner-Position zurücksetzen“ (z. B. nach Abstecken des Beamers) |
 
-Nach Ablauf bleibt der Banner sichtbar, bis er geschlossen wird. Ein Klick auf `+1` startet dann eine weitere Minute.
+Nach Ablauf bleibt der Banner noch 5 Sekunden sichtbar und verschwindet dann von selbst. Ein Klick auf `+1` in dieser Zeit startet eine weitere Minute.
 
 ## Gong anpassen
 
