@@ -8,6 +8,8 @@ Ein Übungs-Timer für macOS, gedacht für Vorlesungen und Workshops: Während e
 
 Der Banner liegt auch über PowerPoint-Präsentationen im Vollbildmodus und nimmt der Präsentation nicht den Fokus. Folienwechsel per Tastatur oder Presenter funktionieren also weiterhin.
 
+Ist ein externer Bildschirm angeschlossen, wechselt der Banner automatisch dorthin. Das gilt auch, wenn PowerPoint beim Start der Präsentation die Bildschirmspiegelung aufhebt, um auf dem Laptop die Referentenansicht zu zeigen. Endet die Präsentation und die Spiegelung wird wiederhergestellt, bleibt der Banner sichtbar.
+
 ## Funktionen
 
 - **Schnellstart über die Menüleiste:** Presets für 5, 10, 15, 20 und 30 Minuten oder eine eigene Dauer
